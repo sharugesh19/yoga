@@ -1,0 +1,155 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", Arial, sans-serif;
+
+  /* Mokshaa Yoga brand tokens */
+  --brand-accent: #D97B66;
+  --brand-primary: #8FA876;
+  --brand-text: #3A3A35;
+  --brand-gold: #F5C518;
+  --neutral-bg: #FAF7F0;
+  --neutral-bgAlt: #EEF0E6;
+  --neutral-mid: #7A7A72;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--neutral-bg);
+  color: var(--brand-text);
+  font-family: var(--font-sans);
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--brand-accent);
+  color: #ffffff;
+}
+
+/* ─── Scroll reveal ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Layout utilities ─── */
+.section-pad {
+  padding-block: clamp(4rem, 8vw, 8rem);
+}
+
+.container {
+  width: min(1160px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+/* ─── Typography utilities ─── */
+.eyebrow {
+  color: var(--brand-primary);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow-red {
+  color: var(--brand-accent);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ─── Accessibility ─── */
+.focus-ring {
+  outline: 3px solid transparent;
+  outline-offset: 3px;
+}
+
+.focus-ring:focus-visible {
+  outline-color: var(--brand-accent);
+}
+
+/* ─── Prose (blog body) ─── */
+.prose-yoga {
+  max-width: 72ch;
+}
+
+.prose-yoga h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--brand-text);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.prose-yoga h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--brand-text);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-yoga p {
+  line-height: 1.85;
+  color: #3a3a3a;
+  margin-bottom: 1.25rem;
+}
+
+.prose-yoga ul {
+  padding-left: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.prose-yoga li {
+  line-height: 1.85;
+  color: #3a3a3a;
+  margin-bottom: 0.5rem;
+}
+
+/* ─── Motion reduction ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
