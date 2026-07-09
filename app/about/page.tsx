@@ -70,87 +70,109 @@ export default function AboutPage() {
         alt="Mokshaa Yoga founders and training space"
       />
 
-      {/* Founders */}
+      {/* Mission & Vision */}
       <section className="section-pad bg-neutral-bg">
-        <div className="container">
+        <div className="container grid items-center gap-10 md:grid-cols-2 md:gap-16">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
+            <Image
+              src={instructors[0].image}
+              alt="Yoga practice at Mokshaa Yoga"
+              fill
+              className="object-cover"
+              sizes="(min-width: 768px) 50vw, 100vw"
+            />
+          </div>
+          <div>
+            <p className="eyebrow">Our Mission</p>
+            <h3 className="mt-2 font-display text-3xl font-semibold text-brand-text md:text-4xl">
+              Why We Exist
+            </h3>
+            <p className="mt-4 text-base leading-8 text-neutral-mid">
+              Mokshaa Yoga exists to make authentic yoga instruction accessible to every person in Neelankarai and Chennai — regardless of age, body type or fitness level. We believe yoga is not a fitness trend but a lifelong practice, and we are committed to teaching it with the discipline and care it deserves.
+            </p>
+
+            <p className="mt-8 eyebrow">Our Vision</p>
+            <h3 className="mt-2 font-display text-3xl font-semibold text-brand-text md:text-4xl">
+              Where We're Headed
+            </h3>
+            <p className="mt-4 text-base leading-8 text-neutral-mid">
+              A Chennai where every family has access to the transformative tools of yoga — taught by certified instructors who genuinely care about each student's safety, progress and wellbeing.
+            </p>
+          </div>
+        </div>
+      </section>
+            {/* Journey Timeline */}
+      <section className="section-pad bg-white">
+        <div className="container max-w-4xl">
           <SectionHeader
-            eyebrow="Founders & Lead Teachers"
-            title="Learn from certified, experienced instructors."
-            text="Our founders bring over a decade of teaching experience and the highest international qualifications directly to every batch."
+            eyebrow="Our Journey"
+            title="A Journey of Learning, Service & Growth."
+            text="Some milestones are based on verified training and achievements, while a few are temporary placeholders that can be updated with the studio's exact history."
+            center
           />
-          <div className="mt-12 space-y-16 md:space-y-20">
-            {instructors.map((inst, i) => (
+
+          <div className="relative mt-16">
+            <div className="absolute left-[18px] top-0 h-full w-0.5 bg-brand-primary/30 md:left-1/2 md:-translate-x-1/2"></div>
+
+            {[
+              {
+                year: "2004",
+                title: "Yoga Siromani Teacher Training",
+                text: "S. Maheswari completed the Yoga Siromani Teacher Training Course, laying the foundation for a lifelong journey in authentic yoga education.",
+              },
+              {
+                year: "2008",
+                title: "Mokshaa Yoga Begins",
+                text: "Placeholder — Replace this with the actual year and story of the Mokshaa Yoga studio.",
+              },
+              {
+                year: "2010",
+                title: "Advanced Teacher Training",
+                text: "Both founders completed the Yoga Acharya (Advanced Teacher Training), strengthening their teaching expertise.",
+              },
+              {
+                year: "2011",
+                title: "Service Beyond the Studio",
+                text: "Participated in Japan tsunami relief volunteer activities while continuing their yoga learning journey.",
+              },
+              {
+                year: "2025",
+                title: "Continuing Education",
+                text: "Advanced Japanese language studies and continued international learning to further enrich teaching and cultural exchange.",
+              },
+            ].map((item, index) => (
               <div
-                className={`reveal flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14 ${
-                  i % 2 === 1 ? "lg:flex-row-reverse" : ""
+                key={item.year}
+                className={`relative mb-14 flex flex-col md:mb-20 md:w-1/2 ${
+                  index % 2 === 0
+                    ? "md:pr-12 md:text-right"
+                    : "md:ml-auto md:pl-12"
                 }`}
-                key={inst.slug}
               >
-                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl lg:w-[380px] flex-shrink-0">
-                  <Image
-                    src={inst.image}
-                    alt={inst.alt}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 1024px) 380px, 100vw"
-                  />
+                <div className="absolute left-[9px] top-3 h-5 w-5 rounded-full border-4 border-white bg-brand-primary shadow md:left-auto md:right-[-10px] md:top-5 md:translate-x-1/2">
+                  {index % 2 !== 0 && (
+                    <div className="absolute left-[-22px] top-0 h-5 w-5 rounded-full border-4 border-white bg-brand-primary md:hidden"></div>
+                  )}
                 </div>
-                <div className="flex-1">
-                  <p className="eyebrow">{i === 0 ? "Founder & Director" : "Co-Founder & MD"}</p>
-                  <h3 className="mt-2 font-display text-3xl font-semibold text-brand-text md:text-4xl">
-                    {inst.name}
+
+                <span className="ml-12 inline-block w-fit rounded-full bg-brand-accent px-4 py-1 text-sm font-bold text-white md:ml-0">
+                  {item.year}
+                </span>
+
+                <div className="ml-12 mt-4 rounded-2xl bg-neutral-bg p-6 shadow-card md:ml-0">
+                  <h3 className="font-display text-2xl font-semibold text-brand-text">
+                    {item.title}
                   </h3>
-                  <p className="mt-2 text-sm font-bold text-brand-accent">{inst.experience}</p>
-                  <p className="mt-4 text-base leading-8 text-neutral-mid">{inst.bio}</p>
 
-                  <div className="mt-8 grid gap-8 sm:grid-cols-2">
-                    <div>
-                      <p className="eyebrow">Certifications</p>
-                      <ul className="mt-3 space-y-2.5">
-                        {inst.certifications.map((c) => (
-                          <li key={c} className="flex items-start gap-2 text-sm leading-6 text-brand-text">
-                            <CheckCircle2 size={17} className="mt-0.5 flex-shrink-0 text-brand-primary" />
-                            <span>{c}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div>
-                      <p className="eyebrow">Specializations</p>
-                      <ul className="mt-3 space-y-2.5">
-                        {inst.specialties.map((s) => (
-                          <li key={s} className="flex items-start gap-2 text-sm leading-6 text-brand-text">
-                            <Sparkles size={16} className="mt-0.5 flex-shrink-0 text-brand-accent" />
-                            <span>{s}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-
-                  <div className="mt-8 flex items-center gap-3">
-                    
-                    <a  href={inst.phoneHref}
-                      className="focus-ring inline-flex items-center gap-2 text-sm font-bold text-brand-accent hover:underline"
-                    >
-                      <Phone size={15} />
-                      {inst.phone}
-                    </a>
-                    <span className="text-neutral-bgAlt">|</span>
-                    <Link
-                      href={`/instructors/${inst.slug}`}
-                      className="focus-ring text-sm font-bold text-brand-text hover:underline"
-                    >
-                      View profile &rarr;
-                    </Link>
-                  </div>
+                  <p className="mt-3 leading-7 text-neutral-mid">
+                    {item.text}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-
       {/* Philosophy */}
       <section className="section-pad bg-brand-text text-white">
         <div className="container">
@@ -214,18 +236,41 @@ export default function AboutPage() {
       <section className="section-pad bg-neutral-bg">
         <div className="container">
           <SectionHeader
-            eyebrow="Core Values"
-            title="What we stand for."
-            text="Our day-to-day decisions and teachings are guided by these core principles."
+            eyebrow="What We Stand For"
+            title="Our Values."
+            center
           />
-          <div className="mt-12 grid grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
-            {values.map((v) => {
+          <div className="mt-12 grid gap-6 md:grid-cols-2">
+            {[
+              {
+                title: "Authenticity",
+                text: "We teach from classical yoga foundations — Hatha and traditional alignment principles — honouring the original teachings of yoga.",
+                icon: Sparkles,
+              },
+              {
+                title: "Mindfulness",
+                text: "Every class weaves awareness into movement. We teach you to practise yoga not just on the mat but in every moment of life.",
+                icon: Star,
+              },
+              {
+                title: "Compassion",
+                text: "All bodies are welcome. Our instructors meet every student where they are, with patience, warmth and zero judgment.",
+                icon: HeartHandshake,
+              },
+              {
+                title: "Community",
+                text: "Mokshaa Yoga is not just a studio. It is a community of practitioners who support, inspire and uplift one another.",
+                icon: Shield,
+              },
+            ].map((v) => {
               const Icon = v.icon;
               return (
-                <div className="reveal rounded-2xl border border-brand-text/8 bg-white p-4 sm:p-6" key={v.title}>
-                  <Icon className="text-brand-accent" size={24} />
-                  <h3 className="mt-3 font-display text-lg font-semibold text-brand-text sm:mt-4 sm:text-xl">{v.title}</h3>
-                  <p className="mt-2 text-xs leading-5 text-neutral-mid sm:mt-3 sm:text-sm sm:leading-6">{v.text}</p>
+                <div className="reveal rounded-2xl bg-white p-8 shadow-card" key={v.title}>
+                  <div className="inline-flex rounded-xl bg-brand-primary/10 p-3">
+                    <Icon className="text-brand-primary" size={22} />
+                  </div>
+                  <h3 className="mt-5 font-display text-2xl font-semibold text-brand-text">{v.title}</h3>
+                  <p className="mt-3 text-base leading-7 text-neutral-mid">{v.text}</p>
                 </div>
               );
             })}

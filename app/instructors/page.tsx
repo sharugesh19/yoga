@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { Award, Shield, Star, Phone } from "lucide-react";
+import { Award, Shield, Star, Phone, CheckCircle2, Sparkles } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SectionHeader from "@/components/SectionHeader";
 import JsonLd from "@/components/JsonLd";
@@ -10,7 +10,7 @@ import { instructors, certifications, site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Certified Yoga Instructors Chennai | E-RYT 500 | Mokshaa Yoga",
   description:
-    "Meet S. Maheswari & S. Satheesh — E-RYT 500 certified yoga acharyas and founders of Mokshaa Yoga, Neelankarai Chennai. Over a decade of teaching experience.",
+"Meet S. Maheswari and S. Satheesh, founders of Mokshaa Yoga. Together they bring over 20 years of teaching experience, E-RYT 500 certification, Yoga Alliance YACEP recognition, and international yoga teaching experience.",
 };
 
 export default function InstructorsPage() {
@@ -45,8 +45,8 @@ export default function InstructorsPage() {
 
       <PageHero
         eyebrow="Our Teachers"
-        title="E-RYT 500 certified yoga acharyas."
-        text="Meet the founders of Mokshaa Yoga — certified teachers holding E-RYT 500, the highest credentials in internationally recognized yoga methodology."
+        title="Meet the Founders of Mokshaa Yoga."
+        text="With over two decades of teaching experience, our founders combine traditional yogic wisdom with modern therapeutic practices, helping thousands of students improve their physical, mental and emotional well-being."
         image={instructors[0].image}
         alt="Instructors at Mokshaa Yoga Neelankarai Chennai"
       />
@@ -59,52 +59,72 @@ export default function InstructorsPage() {
             title="Experienced, certified teachers."
             text="Every class at Mokshaa Yoga is taught directly by our founders, ensuring personalized attention and safe posture training."
           />
-          <div className="mt-12 grid gap-10 lg:grid-cols-2">
+          <div className="mt-12 space-y-16 md:space-y-20">
             {instructors.map((inst, i) => (
               <div
-                className="reveal flex flex-col overflow-hidden rounded-2xl border border-brand-text/8 bg-white shadow-card transition hover:shadow-soft"
+                className={`reveal flex flex-col gap-10 lg:flex-row lg:items-start lg:gap-14 ${
+                  i % 2 === 1 ? "lg:flex-row-reverse" : ""
+                }`}
                 key={inst.slug}
               >
-                <div className="relative aspect-[16/10] w-full overflow-hidden">
-                  <Image src={inst.image} alt={inst.alt} fill className="object-cover" sizes="(min-width: 1024px) 50vw, 100vw" />
+                <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl lg:w-[380px] flex-shrink-0">
+                  <Image
+                    src={inst.image}
+                    alt={inst.alt}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(min-width: 1024px) 380px, 100vw"
+                  />
                 </div>
-                <div className="p-8">
-                  <span className="eyebrow">{i === 0 ? "Founder & Director" : "Co-Founder & MD"}</span>
-                  <h3 className="mt-2 font-display text-4xl font-semibold text-brand-text">{inst.name}</h3>
+                <div className="flex-1">
+                  <p className="eyebrow">{i === 0 ? "Founder & Director" : "Co-Founder & MD"}</p>
+                  <h3 className="mt-2 font-display text-3xl font-semibold text-brand-text md:text-4xl">
+                    {inst.name}
+                  </h3>
                   <p className="mt-1 text-sm font-semibold text-brand-primary">{inst.role}</p>
-                  <p className="mt-2 text-xs font-bold text-neutral-mid uppercase tracking-wide">{inst.experience}</p>
+                  <p className="mt-2 text-sm font-bold text-brand-accent">{inst.experience}</p>
 
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {inst.certifications.map((cert) => (
-                      <span key={cert} className="rounded-full bg-neutral-bgAlt px-2.5 py-0.5 text-xs font-semibold text-brand-text">
-                        {cert}
-                      </span>
-                    ))}
+                  <p className="mt-4 text-base leading-8 text-neutral-mid">{inst.bio}</p>
+
+                  <div className="mt-8 grid gap-8 sm:grid-cols-2">
+                    <div>
+                      <p className="eyebrow">Certifications</p>
+                      <ul className="mt-3 space-y-2.5">
+                        {inst.certifications.map((c) => (
+                          <li key={c} className="flex items-start gap-2 text-sm leading-6 text-brand-text">
+                            <CheckCircle2 size={17} className="mt-0.5 flex-shrink-0 text-brand-primary" />
+                            <span>{c}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="eyebrow">Specializations</p>
+                      <ul className="mt-3 space-y-2.5">
+                        {inst.specialties.map((s) => (
+                          <li key={s} className="flex items-start gap-2 text-sm leading-6 text-brand-text">
+                            <Sparkles size={16} className="mt-0.5 flex-shrink-0 text-brand-accent" />
+                            <span>{s}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
 
-                  <div className="mt-4 flex flex-wrap gap-1.5">
-                    {inst.specialties.map((spec) => (
-                      <span key={spec} className="rounded-full border border-brand-primary/20 px-3 py-1 text-xs font-semibold text-brand-primary">
-                        {spec}
-                      </span>
-                    ))}
-                  </div>
-
-                  <p className="mt-6 text-sm leading-8 text-neutral-mid">{inst.bio}</p>
-
-                  <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-t border-brand-text/5 pt-6">
-                    <a
-                      href={inst.phoneHref}
+                  <div className="mt-8 flex items-center gap-3">
+                    
+                    <a  href={inst.phoneHref}
                       className="focus-ring inline-flex items-center gap-2 text-sm font-bold text-brand-accent hover:underline"
                     >
                       <Phone size={15} />
                       {inst.phone}
                     </a>
+                    <span className="text-neutral-bgAlt">|</span>
                     <Link
                       href={`/instructors/${inst.slug}`}
-                      className="focus-ring inline-flex items-center gap-1 text-sm font-bold text-brand-text hover:underline"
+                      className="focus-ring text-sm font-bold text-brand-text hover:underline"
                     >
-                      View Full Profile &rarr;
+                      View profile &rarr;
                     </Link>
                   </div>
                 </div>

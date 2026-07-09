@@ -74,7 +74,7 @@ export default function HomePage() {
           <div>
             {/* Eyebrow */}
             <p className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-primary drop-shadow-md sm:text-xs sm:tracking-[0.3em]">
-              Mokshaa Yoga Centre &middot; Chennai
+                    E-RYT 500 Certified • ISO 9001:2015 Certified • Neelankarai, Chennai
             </p>
 
             {/* Headline */}
@@ -86,7 +86,7 @@ export default function HomePage() {
               Through Yoga
             </h1>
           </div>
-
+          
           {/* CTA Buttons */}
            <div className="flex flex-row items-center gap-2.5 sm:gap-4">
             <Link
@@ -104,6 +104,7 @@ export default function HomePage() {
               <MessageCircle size={17} />
               WhatsApp Us
             </a>
+            
           </div>
         </div>
       </section>
@@ -144,8 +145,8 @@ export default function HomePage() {
         <div className="container grid gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
           <SectionHeader
             eyebrow="Who we are"
-            title="A certified yoga studio built around real teaching, not templates."
-            text="Mokshaa Yoga is an ISO 9001:2015 certified studio in Neelankarai, Chennai, founded by two E-RYT 500 certified yoga acharyas. We teach 7 class formats designed for every age, goal and life stage — with the credentials, structure and personal attention to back it up."
+            title="Authentic Yoga. Certified Instructors. Personal Attention."
+            text="With over two decades of teaching experience, Mokshaa Yoga offers authentic yoga practices guided by internationally certified instructors. Every class is designed to improve physical health, mental well-being and inner balance in a safe and supportive environment."
           />
           <div className="reveal space-y-5 text-neutral-mid leading-8">
             <div className="flex flex-wrap gap-2">
@@ -219,7 +220,7 @@ export default function HomePage() {
           <div className="mt-10 rounded-2xl bg-neutral-bgAlt p-5 sm:p-6">
             <p className="text-sm font-bold uppercase tracking-widest text-neutral-mid">Specialist focus areas</p>
             <div className="mt-4 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
-              {["Weight Loss", "Back Pain", "Stress Relief", "Yoga Therapy", "Counselling"].map((tag) => (
+              {["Weight Management","Back Pain Relief","Women's Health","Stress Management","Corporate Yoga"].map((tag) => (
                 <span
                   key={tag}
                   className="rounded-full bg-white border border-brand-accent/20 px-4 py-2 text-center text-sm font-semibold text-brand-accent sm:py-1.5"
@@ -237,8 +238,8 @@ export default function HomePage() {
         <div className="container">
           <SectionHeader
             eyebrow="Why Mokshaa Yoga"
-            title="Credentials, structure and genuine care — not just a class."
-            text="We are one of very few yoga studios in Chennai with ISO 9001:2015 certification and E-RYT 500 qualified founders. These aren't marketing words — they're audited, verified standards."
+            title="Why Hundreds of Students Choose Mokshaa Yoga"
+            text="Our internationally certified instructors combine traditional yoga wisdom with modern teaching methods to create a safe, effective and transformative experience for every student."
             light
           />
           <div className="mt-12 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-4">
@@ -278,6 +279,9 @@ export default function HomePage() {
                       {cert}
                     </span>
                   ))}
+                  <span className="rounded-full bg-brand-primary/10 px-3 py-1 text-xs font-bold text-brand-primary">
+                    {inst.experience}
+                  </span>
                 </div>
                 <p className="mt-3 text-sm leading-6 text-neutral-mid line-clamp-2">{inst.shortBio}</p>
               </div>
@@ -376,6 +380,11 @@ export default function HomePage() {
             <address className="mt-5 not-italic leading-8 text-white/75">
               {site.address}
             </address>
+            <div className="mt-6 space-y-2 text-sm text-white/80">
+              <p>✓ Free Trial Classes Available</p>
+              <p>✓ Morning & Evening Batches</p>
+              <p>✓ Online & Offline Yoga Programs</p>
+            </div>
             <div className="mt-6 space-y-3">
               <a href={site.phoneHref} className="flex items-center gap-3 text-sm font-semibold text-white hover:text-brand-primary transition-colors">
                 <Phone size={16} className="text-brand-primary flex-shrink-0" />
