@@ -70,7 +70,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-black/55" />
 
         {/* Content block — pinned top-to-bottom */}
-        <div className="container relative z-10 flex flex-1 flex-col items-center justify-between px-4 pt-8 pb-8 text-center sm:pt-12 sm:pb-12 lg:pt-16 lg:pb-16">
+        <div className="container relative z-10 flex flex-1 flex-col items-center justify-center gap-8 px-4 py-10 text-center sm:gap-12 lg:gap-16 sm:py-14 lg:py-16 overflow-y-auto">
           <div>
             {/* Eyebrow */}
             <p className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-primary drop-shadow-md sm:text-xs sm:tracking-[0.3em]">
@@ -87,8 +87,20 @@ export default function HomePage() {
             </h1>
           </div>
           
+          {/* Trust stats strip */}
+          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs font-semibold text-white/80 drop-shadow-md sm:mt-8 sm:gap-x-4 sm:text-sm">
+            {trustStats.map(({ value, label }, i) => (
+              <span className="flex items-center gap-3 sm:gap-4" key={label}>
+                {i > 0 && <span className="text-white/30">&middot;</span>}
+                <span>
+                  <span className="font-bold text-brand-primary">{value}</span> {label}
+                </span>
+              </span>
+            ))}
+          </div>
+
           {/* CTA Buttons */}
-           <div className="flex flex-row items-center gap-2.5 sm:gap-4">
+          <div className="mt-8 flex flex-row items-center gap-2.5 sm:mt-10 sm:gap-4">
             <Link
               className="focus-ring inline-flex min-w-[130px] items-center justify-center gap-2 rounded-full bg-brand-primary px-4 py-3 text-xs font-bold text-white shadow-lg transition hover:bg-brand-primaryDark sm:min-w-[160px] sm:px-7 sm:py-3.5 sm:text-sm"
               href="/contact"
