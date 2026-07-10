@@ -3,7 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { Menu, Phone, X } from "lucide-react";
+import { Menu, MapPin, Phone, X } from "lucide-react";
 import { useState, useEffect } from "react";
 import { nav, site } from "@/lib/content";
 
@@ -29,13 +29,16 @@ export default function Header() {
         <div className="container flex h-16 items-center justify-between sm:h-20">
           {/* Logo / wordmark */}
           <Link className="focus-ring flex items-center" href="/" aria-label="Mokshaa Yoga home">
-            <div className="relative h-10 w-10 overflow-hidden rounded-full border border-brand-text/10 flex-shrink-0 sm:h-12 sm:w-12">
-              <Image src="/logo.png" alt="Mokshaa Yoga logo" fill className="object-cover" priority sizes="48px" />
+            <div className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-full bg-white p-0.5 shadow-sm sm:h-12 sm:w-12">
+              <div className="relative h-full w-full overflow-hidden rounded-full">
+                <Image src="/logo.png" alt="Mokshaa Yoga logo" fill className="object-cover" priority sizes="48px" />
+              </div>
             </div>
              <span className="ml-2.5 font-display text-sm font-semibold text-brand-text sm:ml-3 sm:text-lg">
               Mokshaa Yoga
             </span>
           </Link>
+
 
           {/* Desktop nav */}
           <nav className="hidden items-center gap-6 text-sm font-semibold text-brand-text lg:flex" aria-label="Primary navigation">
@@ -62,16 +65,22 @@ export default function Header() {
               {site.phoneFormatted}
             </a>
             <Link
-              className="focus-ring rounded-full bg-white border border-brand-text/10 px-5 py-3 text-sm font-bold text-brand-text shadow-card transition hover:bg-neutral-bgAlt"
+              className="focus-ring rounded-full bg-brand-accent px-5 py-3 text-sm font-bold text-white shadow-card transition hover:bg-brand-accent/85"
               href="/contact"
             >
               Book a Class
             </Link>
           </div>
 
-          {/* Mobile call icon + hamburger */}
+          {/* Mobile location + call icon + hamburger */}
           <div className="flex items-center gap-2 lg:hidden">
-            
+            <Link
+              className="focus-ring rounded-full border border-brand-text/15 p-2.5 text-brand-text transition hover:border-brand-primary hover:text-brand-primary"
+              href="/#find-us"
+              aria-label="View our location"
+            >
+              <MapPin size={20} aria-hidden />
+            </Link>
             <a  className="focus-ring rounded-full border border-brand-text/15 p-2.5 text-brand-text"
               href={site.phoneHref}
               aria-label={`Call ${site.phoneFormatted}`}

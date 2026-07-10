@@ -20,8 +20,10 @@ export default function Footer() {
         {/* Brand column */}
         <div className="sm:col-span-2 lg:col-span-1">
           <div className="flex items-center">
-            <div className="relative h-12 w-12 overflow-hidden rounded-full border border-white/20 flex-shrink-0">
-              <Image src="/logo.png" alt="Mokshaa Yoga logo" fill className="object-cover" sizes="48px" />
+            <div className="relative h-12 w-12 flex-shrink-0 overflow-hidden rounded-full bg-white p-0.5 shadow-md">
+              <div className="relative h-full w-full overflow-hidden rounded-full">
+                <Image src="/logo.png" alt="Mokshaa Yoga logo" fill className="object-cover" sizes="48px" />
+              </div>
             </div>
             <span className="ml-3 font-display text-lg font-semibold text-white">Mokshaa Yoga</span>
           </div>

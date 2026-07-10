@@ -27,7 +27,7 @@ export default function MotionBoot() {
       const rect = el.getBoundingClientRect();
       if (rect.top < window.innerHeight && rect.bottom > 0) {
         el.classList.add("is-visible");
-      } else {
+      } else if (observer) {
         observer.observe(el);
       }
     };

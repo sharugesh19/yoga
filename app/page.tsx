@@ -71,7 +71,7 @@ export default function HomePage() {
 
         {/* Content block — pinned top-to-bottom */}
         <div className="container relative z-10 flex flex-1 flex-col items-center justify-center gap-8 px-4 py-10 text-center sm:gap-12 lg:gap-16 sm:py-14 lg:py-16 overflow-y-auto">
-          <div>
+          <div className="-mt-16 sm:mt-0">
             {/* Eyebrow */}
             <p className="font-sans text-[10px] font-bold uppercase tracking-[0.25em] text-brand-primary drop-shadow-md sm:text-xs sm:tracking-[0.3em]">
                     E-RYT 500 Certified • ISO 9001:2015 Certified • Neelankarai, Chennai
@@ -88,7 +88,7 @@ export default function HomePage() {
           </div>
           
           {/* Trust stats strip */}
-          <div className="mt-6 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs font-semibold text-white/80 drop-shadow-md sm:mt-8 sm:gap-x-4 sm:text-sm">
+          <div className="mt-28 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-xs font-semibold text-white/80 drop-shadow-md sm:mt-8 sm:gap-x-4 sm:text-sm">
             {trustStats.map(({ value, label }, i) => (
               <span className="flex items-center gap-3 sm:gap-4" key={label}>
                 {i > 0 && <span className="text-white/30">&middot;</span>}
@@ -232,10 +232,12 @@ export default function HomePage() {
           <div className="mt-10 rounded-2xl bg-neutral-bgAlt p-5 sm:p-6">
             <p className="text-sm font-bold uppercase tracking-widest text-neutral-mid">Specialist focus areas</p>
             <div className="mt-4 grid grid-cols-2 gap-2.5 sm:flex sm:flex-wrap sm:gap-3">
-              {["Weight Management","Back Pain Relief","Women's Health","Stress Management","Corporate Yoga"].map((tag) => (
+              {["Weight Management","Back Pain Relief","Women's Health","Stress Management","Corporate Yoga"].map((tag, i, arr) => (
                 <span
                   key={tag}
-                  className="rounded-full bg-white border border-brand-accent/20 px-4 py-2 text-center text-sm font-semibold text-brand-accent sm:py-1.5"
+                  className={`rounded-full bg-white border border-brand-accent/20 px-4 py-2 text-center text-sm font-semibold text-brand-accent sm:py-1.5 ${
+                    i === arr.length - 1 && arr.length % 2 !== 0 ? "col-span-2 justify-self-center sm:col-span-1" : ""
+                  }`}
                 >
                   {tag}
                 </span>
@@ -276,7 +278,7 @@ export default function HomePage() {
       <section className="section-pad bg-neutral-bg">
         <div className="container grid gap-8 lg:grid-cols-2">
           {instructors.map((inst, i) => (
-            <div key={inst.slug} className="reveal flex gap-6 rounded-2xl border border-brand-text/8 bg-white p-6 shadow-card">
+            <div key={inst.slug} className={`reveal flex gap-6 rounded-2xl border border-brand-text/8 bg-white p-6 shadow-card ${i === 1 ? "flex-row-reverse text-right" : ""}`}>
               <div className="relative h-24 w-24 flex-shrink-0 overflow-hidden rounded-full border-4 border-brand-primary/30">
                 <Image src={inst.image} alt={inst.alt} fill unoptimized className="object-cover" sizes="96px" />
               </div>
@@ -382,7 +384,7 @@ export default function HomePage() {
 
 
       {/* ── 11. LOCATION / CONTACT ── */}
-      <section className="section-pad bg-brand-text text-white">
+      <section id="find-us" className="section-pad bg-brand-text text-white scroll-mt-24">
         <div className="container grid gap-10 lg:grid-cols-2 lg:items-stretch">
           <div>
             <p className="eyebrow text-brand-primary">Find us</p>

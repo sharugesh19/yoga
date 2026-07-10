@@ -66,16 +66,15 @@ export default function AboutPage() {
         eyebrow="Our Story"
         title="Two certified yoga acharyas. One mission."
         text="Mokshaa Yoga was founded in Neelankarai, Chennai, by two E-RYT 500 certified yoga acharyas. We believe authentic yoga instruction, rigorous qualifications and personal attention are the foundation for safe, life-long practice."
-        image={instructors[0].image}
+        image="/hero-image.jpg"
         alt="Mokshaa Yoga founders and training space"
       />
-
       {/* Mission & Vision */}
       <section className="section-pad bg-neutral-bg">
         <div className="container grid items-center gap-10 md:grid-cols-2 md:gap-16">
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl">
             <Image
-              src={instructors[0].image}
+              src="/hero-image.jpg"
               alt="Yoga practice at Mokshaa Yoga"
               fill
               className="object-cover"
@@ -149,11 +148,7 @@ export default function AboutPage() {
                     : "md:ml-auto md:pl-12"
                 }`}
               >
-                <div className="absolute left-[9px] top-3 h-5 w-5 rounded-full border-4 border-white bg-brand-primary shadow md:left-auto md:right-[-10px] md:top-5 md:translate-x-1/2">
-                  {index % 2 !== 0 && (
-                    <div className="absolute left-[-22px] top-0 h-5 w-5 rounded-full border-4 border-white bg-brand-primary md:hidden"></div>
-                  )}
-                </div>
+                <div className="absolute left-[9px] top-3 h-5 w-5 rounded-full border-4 border-white bg-brand-primary shadow md:left-auto md:right-[-10px] md:top-5 md:translate-x-1/2"></div>
 
                 <span className="ml-12 inline-block w-fit rounded-full bg-brand-accent px-4 py-1 text-sm font-bold text-white md:ml-0">
                   {item.year}
